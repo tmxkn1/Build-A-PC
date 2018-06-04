@@ -1,0 +1,79 @@
+﻿<Window x:Class="Build_a_PC.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Build_a_PC"
+        mc:Ignorable="d"
+        Title="Build A PC" Height="900" Width="833" MinWidth="833"
+        Loaded="MainWindow_OnLoaded" WindowStartupLocation="CenterScreen"
+        FontSize="13">
+    <Window.Resources>
+        <Image Source="Resources/icon_shopping_cart_green.png" x:Key="ShoppingCartIcon"/>
+        <Image Source="Resources/icon_collapse_all.png" x:Key="CollapseAllIcon"/>
+        <Image Source="Resources/icon_uncollapse_all.png" x:Key="UnCollapseAllIcon"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="1" BorderThickness="0,0,0,2" BorderBrush="#FF8DA064"/>
+        <ScrollViewer Grid.Row="1" Margin="10">
+            <Grid Margin="0,0,10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <local:PartItem x:Name="Case" Grid.Row="0"/>
+                <local:PartItem x:Name="CPU" Grid.Row="1"/>
+                <local:PartItem x:Name="MotherBoard" Grid.Row="2"/>
+                <local:PartItem x:Name="GPU" Grid.Row="3"/>
+                <local:PartItem x:Name="Ram" Grid.Row="4"/>
+                <local:PartItem x:Name="PSU" Grid.Row="5"/>
+                <local:PartItem x:Name="HDD1" Grid.Row="6"/>
+                <local:PartItem x:Name="HDD2" Grid.Row="7"/>
+                <local:PartItem x:Name="Monitor" Grid.Row="8"/>
+                <local:PartItem x:Name="Mouse" Grid.Row="9"/>
+                <local:PartItem x:Name="Keyboard" Grid.Row="10"/>
+                <local:PartItem x:Name="Accessory1" Grid.Row="11"/>
+            </Grid>
+        </ScrollViewer>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+            <Grid.ColumnDefinitions><ColumnDefinition Width="500"/><ColumnDefinition/></Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" Margin="20" Grid.Row="0" HorizontalAlignment="Center">
+                <TextBlock Text="便宜点" VerticalAlignment="Center"/>
+                <Slider x:Name="PresetSlider" Width="300" VerticalAlignment="Center" Margin="7,0" SmallChange="1" TickPlacement="BottomRight" ValueChanged="PresetSlider_OnValueChanged" Maximum="6" LargeChange="0" IsSnapToTickEnabled="True">
+                </Slider>
+                <TextBlock Text="舒适点" VerticalAlignment="Center" Margin="0, 0,50,0"/>
+            </StackPanel>
+            <TextBlock Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Left" TextWrapping="Wrap" x:Name="PresetDesc" Margin="40,0,10,0" MinHeight="70"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1" >
+                <Button Content="{StaticResource UnCollapseAllIcon}" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="全部展开" Click="UnCollapseButton_OnClick"/>
+                <Button Content="{StaticResource CollapseAllIcon}" Height="20" Background="{x:Null}" BorderBrush="{x:Null}" Margin="10,0,20,0" ToolTip="全部合上" Click="CollapseButton_OnClick"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical"  Margin="20" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2">
+                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Right" >
+                    <TextBlock Text="总计：" FontFamily="Microsoft YaHei" FontSize="20" Foreground="CornflowerBlue"/>
+                    <TextBlock x:Name="TotalCost" FontFamily="Microsoft YaHei" FontSize="20" Foreground="#FF8DA064"/>
+                    <TextBlock Text=" 元" FontFamily="Microsoft YaHei" FontSize="20" Foreground="CornflowerBlue"/>
+                    <Button Content="{StaticResource ShoppingCartIcon}" Width="30" Margin="20,0,0,0" Click="ButtonBase_OnClick" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="全部加入购物车"/>
+                </StackPanel>
+                <TextBlock Text="价格为程序最后一次更新时的市价并且不包含折扣，仅做参考。" MaxWidth="210" TextWrapping="Wrap" HorizontalAlignment="Right" Margin="0,5,0,0"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
